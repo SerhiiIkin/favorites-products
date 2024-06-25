@@ -1,6 +1,6 @@
 import SectionLayout from "../../components/Layouts/SectionLayout/SectionLayout";
 import Title from "../../components/Title/Title";
-import Newsletter from "../../components/newsletter/Newsletter";
+import Newsletter from "../../components/Newsletter/Newsletter";
 
 const Contact = () => {
     return (

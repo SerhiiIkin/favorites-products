@@ -137,3 +137,53 @@
         display: none;
     }
 }
+
+.basketBtn {
+    display: flex;
+}
+
+.basketContainer {
+    position: relative;
+    @media (min-width: 1281px) {
+        &:hover {
+            .basketContent {
+                display: table;
+                opacity: 1;
+                transition-behavior: allow-discrete;
+                transition-duration: 1.5s;
+                transition-property: display opacity;
+
+                @starting-style {
+                    display: table;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
+.basketContent {
+    transition-behavior: allow-discrete;
+    transition-duration: 1.5s;
+    transition-property: display opacity;
+    opacity: 0;
+    display: none;
+    width: max-content;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    th,
+    td {
+        padding: 5px 10px;
+    }
+}
+
+.basketWrapper {
+    position: absolute;
+    padding-top: 10px;
+    z-index: 30;
+    top: 100%;
+    right: 0;
+}

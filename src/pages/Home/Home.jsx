@@ -4,7 +4,7 @@ import SectionLayout from "../../components/Layouts/SectionLayout/SectionLayout"
 import Title from "../../components/Title/Title";
 import useFetch from "../../hooks/useFetch";
 import ProductsLayout from "../../components/Layouts/ProductsLayout/ProductsLayout";
-import Newsletter from "../../components/newsletter/Newsletter";
+import Newsletter from "../../components/Newsletter/Newsletter";
 
 const Home = () => {
     const { error, isLoading, favorites, myFavorites } = useFetch();

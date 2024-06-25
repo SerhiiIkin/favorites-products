@@ -7,10 +7,19 @@ import Title from "../../components/Title/Title";
 import useFetch from "../../hooks/useFetch";
 import Button from "../../components/Button/Button";
 import styles from "./products.module.css";
+import MultiRangeSlider from "../../components/MultiRangeSlider/MultiRangeSlider";
 
 const Products = () => {
     const { products, error, isLoading } = useFetch();
     const [sortedProducts, setSortedProducts] = useState(products);
+
+    const minPrice = useMemo(() => {
+        return Math.min(...products.map((product) => product.price));
+    }, [products]);
+
+    const maxPrice = useMemo(() => {
+        return Math.max(...products.map((product) => product.price));
+    }, [products]);
 
     const categories = useMemo(() => {
         return [
@@ -38,25 +47,34 @@ const Products = () => {
     return (
         <SectionLayout>
             <Title typeTitle="h1" titleText="Produkter" />
-             <FetchDataHandler
+            <FetchDataHandler
                 data={{
                     data: categories,
                     error,
                     isLoading,
                 }}
             >
-            <div className={styles.buttonContainer}>
-                {categories.map((category, index) => (
-                    <Button
-                        onClick={sortingButtonCLick}
-                        className={styles.button}
-                        key={index}
-                    >
-                        {category}
-                    </Button>
-                ))}
-            </div>
+                <div className={styles.buttonContainer}>
+                    {categories.map((category, index) => (
+                        <Button
+                            onClick={sortingButtonCLick}
+                            className={styles.button}
+                            key={index}
+                        >
+                            {category}
+                        </Button>
+                    ))}
+                </div>
             </FetchDataHandler>
+            {minPrice > 0 && maxPrice > 0 && (
+                <MultiRangeSlider
+                    min={minPrice}
+                    max={maxPrice}
+                    onChange={({ min, max }) =>
+                        console.log(`min = ${min}, max = ${max}`)
+                    }
+                />
+            )}
             <FetchDataHandler
                 data={{
                     data: sortedProducts,

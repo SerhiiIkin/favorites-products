@@ -3,13 +3,21 @@ import Title from "../Title/Title";
 import styles from "./productCard.module.css";
 import Button from "../Button/Button";
 import { FaArrowLeft } from "react-icons/fa6";
-import { useState } from "react";
+import { MdOutlineAddShoppingCart, MdFileDownloadDone } from "react-icons/md";
+import {  useState } from "react";
 import { FcLike } from "react-icons/fc";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
-    const { setFavoritesLocalStorage, favoritesLocalStorage } = useFetch();
+    const {
+        setFavoritesLocalStorage,
+        favoritesLocalStorage,
+        setBasketLocalStorage,
+        basketLocalStorage,
+        
+    } = useFetch();
     const [imagesFiltered, setImagesFiltered] = useState(product.images);
+   
 
     const onClickBtn = (event) => {
         event.preventDefault();
@@ -26,7 +34,18 @@ const ProductCard = ({ product }) => {
         }
     };
 
-    const LikeProduct = (event) => {
+    const basketProduct = (event) => {
+        event.preventDefault();
+        if (basketLocalStorage.includes(product.id)) {
+            setBasketLocalStorage((prev) =>
+                prev.filter((id) => id !== product.id)
+            );
+        } else {
+            setBasketLocalStorage((prev) => [...prev, product.id]);
+        }
+    };
+
+    const likeProduct = (event) => {
         event.preventDefault();
         if (favoritesLocalStorage.includes(product.id)) {
             setFavoritesLocalStorage((prev) =>
@@ -71,9 +90,20 @@ const ProductCard = ({ product }) => {
                         : ""
                 }`}
                 type="button"
-                onClick={LikeProduct}
+                onClick={likeProduct}
             >
                 <FcLike />
+            </Button>
+            <Button
+                className={styles.buttonBasket}
+                type="button"
+                onClick={basketProduct}
+            >
+                {basketLocalStorage.includes(product.id) ? (
+                    <MdFileDownloadDone />
+                ) : (
+                    <MdOutlineAddShoppingCart />
+                )}
             </Button>
             <div className={styles.images}>
                 {imagesFiltered?.length > 1 && (

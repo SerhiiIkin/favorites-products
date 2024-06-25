@@ -76,9 +76,20 @@
     }
 }
 
+.buttonBasket {
+    grid-column-start: 2;
+    @media (min-width: 1281px) {
+        &:hover {
+            svg {
+                fill: orangered;
+            }
+           
+        }
+    }
+}
+
 .buttonLike {
     grid-column-start: 1;
-    grid-column: 2 span;
     & svg {
         width: 25px;
         height: 25px;
