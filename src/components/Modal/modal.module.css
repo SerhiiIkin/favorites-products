@@ -1,0 +1,61 @@
+.dialog {
+    opacity: 0;
+    translate: -50% 25vh;
+    transition-property: opacity display overlay;
+    transition-duration: 1s;
+    transition-behavior: allow-discrete;
+    top: 50%;
+    left: 50%;
+    border: none;
+
+    &::backdrop {
+        background: linear-gradient(to right, #ff9a9e, #fad0c4, #ffd1ff);
+        opacity: 0;
+        transition-property: opacity display overlay;
+        transition-duration: 1s;
+        transition-behavior: allow-discrete;
+    }
+
+    &[open] {
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        border: none;
+        opacity: 1;
+        transition-property: opacity display overlay;
+        transition-duration: 1s;
+        transition-behavior: allow-discrete;
+
+        &::backdrop {
+            opacity: 0.75;
+        }
+
+        @starting-style {
+            opacity: 0;
+            border: none;
+            top: 50%;
+            left: 50%;
+            translate: -50% -25vh;
+        }
+    }
+}
+
+@starting-style {
+    dialog[open]::backdrop {
+        opacity: 0;
+    }
+}
+
+.button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.container {
+    min-height: 100px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding: 20px 100px 20px 20px;
+}

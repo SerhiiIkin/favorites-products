@@ -1,0 +1,12 @@
+.list {
+    gap: 10px;
+    display: grid;
+}
+
+.list > li:has(strong) {
+    list-style: outside;
+    padding-left: 20px;
+    &::marker {
+        color: blue;
+    }
+}

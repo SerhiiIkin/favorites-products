@@ -1,0 +1,40 @@
+.title1,
+.title2,
+.title3,
+.title4,
+.title5,
+.title6 {
+    text-align: center;
+    color: blueviolet;
+    padding-bottom: 20px;
+}
+
+.title1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.title2 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.title3 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.title4 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.title5 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.title6 {
+    font-size: 16px;
+    font-weight: 700;
+}
