@@ -13,7 +13,7 @@ const Home = () => {
     const { product } = useFetchSingleProduct(7);
 
     return (
-        <main>
+        <>
             <FetchDataHandler data={{ data: [product], error, isLoading }}>
                 <PageHeader product={product} titleText="Pæne produkter" />
             </FetchDataHandler>
@@ -54,7 +54,7 @@ const Home = () => {
                 <Title typeTitle="h2" titleText="Nyhedsbrev" />
                 <Newsletter />
             </SectionLayout>
-        </main>
+        </>
     );
 };
 

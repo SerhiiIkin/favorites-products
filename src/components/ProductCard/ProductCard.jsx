@@ -69,7 +69,7 @@ const ProductCard = ({ product }) => {
                 className={styles.thumbnail}
             />
             <p className={styles.description}>{product.description}</p>
-            <i>
+            <i className={styles.price}>
                 Price: <strong>{product.price}</strong> kr.
             </i>
             <i className={styles.rating}>

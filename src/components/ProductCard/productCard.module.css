@@ -1,16 +1,19 @@
 .card {
     display: grid;
-    gap: 10px;
-    height: 100%;
     background-color: coral;
     padding: 10px;
     border-radius: 10px;
     align-items: center;
+    gap: 10px;
+    transition: background-color 1.5s ease 0s;
+    @media (min-width: 1281px) {
+        &:hover {
+            background-color: #16825c;
+        }
+    }
 }
 
 .thumbnail {
-    grid-column-start: 1;
-    grid-row-start: 1;
     grid-column: 2 span;
     width: 80%;
     object-fit: contain;
@@ -18,85 +21,56 @@
 }
 
 .title {
-    grid-column-start: 1;
     grid-row-start: 2;
     grid-column: 2 span;
     color: lightgreen;
 }
 
 .description {
-    grid-column-start: 1;
     grid-row-start: 3;
     grid-column: 2 span;
 }
 
 .images {
+    grid-row-start: 8;
+    grid-column: 2 span;
     display: flex;
     overflow: hidden;
-    grid-column-start: 1;
-    grid-column: 2 span;
-    width: 100%;
     position: relative;
-    max-height: 400px;
+    height: 400px;
     & img {
         object-fit: contain;
     }
 }
 
 .category {
+    grid-row-start: 5;
     text-transform: capitalize;
+    color: greenyellow;
 }
 
 .brand {
     text-transform: capitalize;
+    grid-row-start: 6;
+    justify-self: start;
+    color: darkcyan;
 }
 
-.buttonLeftImages {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    translate: 0 -50%;
-    @media (min-width: 1281px) {
-        &:hover {
-            color: darkcyan;
-        }
-    }
+.price {
+    grid-row-start: 4;
+    grid-column-start: 1;
+    color: rgb(234, 202, 207);
 }
 
-.buttonRightImages {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    translate: 0 -50%;
-    rotate: 180deg;
-    @media (min-width: 1281px) {
-        &:hover {
-            color: darkcyan;
-        }
-    }
-}
-
-.buttonBasket {
-    grid-column-start: 2;
-    justify-self: center;
-    border: 1px dotted blueviolet;
-    padding: 5px 10px;
-    border-radius: 20px;
-    transition: background 0.5s ease 0s;
-    @media (min-width: 1281px) {
-        &:hover {
-            background: white;
-            svg {
-                transition: fill 0.5s ease 0s;
-                fill: orangered;
-            }
-        }
-    }
+.rating {
+    grid-row-start: 4;
+    justify-self: end;
+    color: lightseagreen;
 }
 
 .buttonLike {
-    grid-column-start: 1;
-    justify-self: center;
+    grid-row-start: 7;
+    justify-self: start;
     padding: 5px 10px;
     & svg {
         width: 25px;
@@ -117,6 +91,49 @@
             path {
                 fill: white;
             }
+        }
+    }
+}
+
+.buttonBasket {
+    grid-row-start: 7;
+    justify-self: right;
+    border: 1px dotted blueviolet;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background 0.5s ease 0s;
+    @media (min-width: 1281px) {
+        &:hover {
+            background: white;
+            svg {
+                transition: fill 0.5s ease 0s;
+                fill: orangered;
+            }
+        }
+    }
+}
+
+.buttonLeftImages {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    translate: 0 -50%;
+    @media (min-width: 1281px) {
+        &:hover {
+            color: lightcyan;
+        }
+    }
+}
+
+.buttonRightImages {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    translate: 0 -50%;
+    rotate: 180deg;
+    @media (min-width: 1281px) {
+        &:hover {
+            color: lightcyan;
         }
     }
 }
