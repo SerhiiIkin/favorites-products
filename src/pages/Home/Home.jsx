@@ -14,7 +14,9 @@ const Home = () => {
 
     return (
         <main>
-            <PageHeader product={product} titleText="Pæne produkter" />
+            <FetchDataHandler data={{ data: [product], error, isLoading }}>
+                <PageHeader product={product} titleText="Pæne produkter" />
+            </FetchDataHandler>
             <SectionLayout>
                 <Title typeTitle="h1" titleText="Brugernes favoritter" />
             </SectionLayout>

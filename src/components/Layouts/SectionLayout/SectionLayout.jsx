@@ -3,7 +3,7 @@ import styles from "./sectionLayout.module.css";
 
 const SectionLayout = ({ children, className }) => {
     return (
-        <section className={`${styles.section} ${className}`}>
+        <section className={`${styles.section} ${className ? className : ""}`}>
             <div className="container">{children}</div>
         </section>
     );

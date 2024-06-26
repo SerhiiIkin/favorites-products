@@ -1,4 +1,4 @@
-import {  useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import FetchDataHandler from "../../components/FetchDataHandler/FetchDataHandler";
 import ProductsLayout from "../../components/Layouts/ProductsLayout/ProductsLayout";
 import SectionLayout from "../../components/Layouts/SectionLayout/SectionLayout";
@@ -99,7 +99,7 @@ const Products = () => {
                 data={{
                     data: sortedProducts,
                     error,
-                    isLoading,
+                    isLoading: sortedProducts.length === 0,
                 }}
             >
                 <ProductsLayout>

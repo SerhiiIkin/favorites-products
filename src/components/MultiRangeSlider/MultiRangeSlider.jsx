@@ -18,7 +18,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
                 setMinVal(value);
                 minValRef.current = value;
             }
-        }, 1000);
+        }, 3000);
     };
 
     const onMaxValueChange = (event) => {
@@ -30,7 +30,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
                 setMaxVal(value);
                 maxValRef.current = value;
             }
-        }, 1000);
+        }, 3000);
     };
 
     // Convert to percentage
@@ -65,7 +65,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         let timer;
         timer = setTimeout(() => {
             onChange({ min: minVal, max: maxVal });
-        }, 2000);
+        }, 3000);
 
         return () => clearTimeout(timer);
     }, [minVal, maxVal]);

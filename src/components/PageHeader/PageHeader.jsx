@@ -1,10 +1,9 @@
-import BackgroundImageSlider from '../BackgroundImageSlider/BackgroundImageSlider';
-import Title from '../Title/Title';
-import styles from './pageHeader.module.css'
-import  PropTypes  from 'prop-types';
+import BackgroundImageSlider from "../BackgroundImageSlider/BackgroundImageSlider";
+import Title from "../Title/Title";
+import styles from "./pageHeader.module.css";
+import PropTypes from "prop-types";
 
 const PageHeader = ({ product, titleText }) => {
-    
     const SliderImg = () => {
         if (product?.images?.length <= 1) {
             return (
@@ -19,17 +18,17 @@ const PageHeader = ({ product, titleText }) => {
         return <BackgroundImageSlider images={product?.images} />;
     };
 
-  return (
-    <section className={styles.section}>
+    return (
+        <section className={styles.section}>
             <SliderImg />
-            <Title type="h1" titleText={titleText} className={styles.title}   />
+            <Title type="h1" titleText={titleText} className={styles.title} />
         </section>
-  )
-}
+    );
+};
 
 PageHeader.propTypes = {
     product: PropTypes.object,
     titleText: PropTypes.string,
 };
 
-export default PageHeader
+export default PageHeader;

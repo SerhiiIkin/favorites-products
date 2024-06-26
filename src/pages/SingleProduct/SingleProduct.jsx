@@ -8,7 +8,7 @@ const SingleProduct = () => {
 
     return (
         <>
-            <PageHeader product={product} title={product.title} />
+            <PageHeader product={product} titleText={product.title} />
         </>
     );
 };

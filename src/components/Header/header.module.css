@@ -144,7 +144,7 @@
 
 .basketContainer {
     position: relative;
-    @media (min-width: 1281px) {
+    @media (min-width: 768px) {
         &:hover {
             .basketContent {
                 display: table;
@@ -163,9 +163,12 @@
 }
 
 .basketContent {
-    transition-behavior: allow-discrete;
-    transition-duration: 1.5s;
-    transition-property: display opacity;
+    @media (min-width: 768px) {
+        transition-behavior: allow-discrete;
+        transition-duration: 1.5s;
+        transition-property: display opacity;
+    }
+
     opacity: 0;
     display: none;
     width: max-content;
@@ -183,7 +186,21 @@
 .basketWrapper {
     position: absolute;
     padding-top: 10px;
-    z-index: 30;
+    z-index: 40;
     top: 100%;
     right: 0;
+}
+
+.activeWrapper {
+    @media (max-width: 767px) {
+        translate: 50% 0;
+    }
+}
+
+.activeContent {
+    @media (max-width: 767px) {
+        display: table;
+        opacity: 1;
+        font-size: 14px;
+    }
 }

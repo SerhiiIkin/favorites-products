@@ -1,31 +1,36 @@
 import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import Logo from "/logo.jpeg";
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { LiaShoppingBasketSolid } from "react-icons/lia";
 import { FaMinus } from "react-icons/fa6";
 import { IoMdAdd } from "react-icons/io";
 import Button from "./../Button/Button";
 import useFetch from "../../hooks/useFetch";
 const Header = () => {
-    const links = [
-        {
-            name: "Home",
-            path: "/",
-        },
-        {
-            name: "About",
-            path: "/about",
-        },
-        {
-            name: "Contact",
-            path: "/contact",
-        },
-        {
-            name: "Products",
-            path: "/products",
-        },
-    ];
+    const [activeButton, setActiveButton] = useState(false);
+
+    const links = useMemo(
+        () => [
+            {
+                name: "Home",
+                path: "/",
+            },
+            {
+                name: "About",
+                path: "/about",
+            },
+            {
+                name: "Contact",
+                path: "/contact",
+            },
+            {
+                name: "Products",
+                path: "/products",
+            },
+        ],
+        []
+    );
 
     const inputRef = useRef();
 
@@ -59,6 +64,10 @@ const Header = () => {
         ]);
     };
 
+    const onBasketBtnClick = () => {
+        setActiveButton((prev) => !prev);
+    };
+
     return (
         <header className={styles.header}>
             <nav className={`container ${styles.container}`}>
@@ -80,16 +89,32 @@ const Header = () => {
                         </li>
                     ))}
                     <li className={styles.basketContainer}>
-                        <Button className={styles.basketBtn}>
+                        <Button
+                            onClick={onBasketBtnClick}
+                            type="button"
+                            className={styles.basketBtn}
+                        >
                             <LiaShoppingBasketSolid />
                         </Button>
-                        <div className={styles.basketWrapper}>
+                        <div
+                            className={`${styles.basketWrapper}  ${
+                                activeButton ? styles.activeWrapper : ""
+                            }`}
+                        >
                             {basketProducts.length === 0 ? (
-                                <div className={styles.basketContent}>Kurv er tom!</div>
+                                <div
+                                    className={`${styles.basketContent} ${
+                                        activeButton ? styles.activeContent : ""
+                                    }`}
+                                >
+                                    Kurv er tom!
+                                </div>
                             ) : (
                                 <table
                                     id="basket"
-                                    className={styles.basketContent}
+                                    className={`${styles.basketContent} ${
+                                        activeButton ? styles.activeContent : ""
+                                    }`}
                                 >
                                     <thead>
                                         <tr className={styles.basketProduct}>
