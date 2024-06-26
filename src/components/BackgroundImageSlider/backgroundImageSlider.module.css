@@ -1,0 +1,31 @@
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: flex;
+    overflow: hidden;
+}
+
+.sliderImg {
+    min-width: 100%;
+    max-height: calc(100dvh - 60px);
+    object-fit: contain;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 4s;
+    order: 1;
+}
+
+.active {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 4s;
+    order: 0;
+
+    @starting-style {
+        opacity: 0;
+        order: 1;
+    }
+}

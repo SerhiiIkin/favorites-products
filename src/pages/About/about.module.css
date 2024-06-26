@@ -4,9 +4,10 @@
 }
 
 .list > li:has(strong) {
-    list-style: outside;
-    padding-left: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
     &::marker {
+        content: counter(list-item) "› ";
         color: blue;
     }
 }

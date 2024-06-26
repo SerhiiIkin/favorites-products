@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
 }
 
 .slider {
@@ -37,14 +37,15 @@
 .slider__leftValue,
 .slider__rightValue {
     margin-top: 20px;
+    max-width: 100px;
 }
 
 .slider__leftValue {
-    left: 6px;
+    left: 0px;
 }
 
 .slider__rightValue {
-    right: -4px;
+    right: 0px;
 }
 
 /* Removing the default appearance */

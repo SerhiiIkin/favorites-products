@@ -16,7 +16,7 @@ const About = () => {
                         at Pæne Produckter is chosen for its aesthetic appeal
                         and superior craftsmanship.
                     </li>
-                    <li className={styles.list}>
+                    <ol className={styles.list}>
                         Our collection includes:
                         <li>
                             <strong>Furniture:</strong> Stylish chairs, tables,
@@ -38,7 +38,7 @@ const About = () => {
                             lighting solutions that brighten your home with
                             style.
                         </li>
-                    </li>
+                    </ol>
                     <li>
                         At Pæne Produckter, we believe in sustainable living.
                         That&apos;s why many of our products are made from

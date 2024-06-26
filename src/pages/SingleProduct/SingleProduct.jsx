@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetchSingleProduct from "../../hooks/useFetchSingleProduct";
-import styles from "./singleProduct.module.css";
-import Title from "../Title/Title";
+import PageHeader from "../../components/PageHeader/PageHeader";
 
 const SingleProduct = () => {
     const { id } = useParams();
@@ -9,8 +8,7 @@ const SingleProduct = () => {
 
     return (
         <>
-            <img className={styles.imgBacground} src={product.thumbnail} alt={product.title} />
-            <Title type="h1" titleText={product.title} />
+            <PageHeader product={product} title={product.title} />
         </>
     );
 };

@@ -1,0 +1,23 @@
+.imgBacground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    object-fit: contain;
+    width: 100dvw;
+    z-index: -1;
+    max-height: calc(100dvh - 60px);
+}
+
+.section {
+    position: relative;
+    height: calc(100dvh - 60px);
+    display: grid;
+    place-items: center;
+}
+
+.title {
+    backdrop-filter: blur(2px);
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.563);
+}

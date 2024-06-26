@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import {  useMemo, useState } from "react";
 import FetchDataHandler from "../../components/FetchDataHandler/FetchDataHandler";
 import ProductsLayout from "../../components/Layouts/ProductsLayout/ProductsLayout";
 import SectionLayout from "../../components/Layouts/SectionLayout/SectionLayout";
@@ -11,7 +11,16 @@ import MultiRangeSlider from "../../components/MultiRangeSlider/MultiRangeSlider
 
 const Products = () => {
     const { products, error, isLoading } = useFetch();
-    const [sortedProducts, setSortedProducts] = useState(products);
+
+    const sortedProductsPrice = useMemo(
+        () => products.sort((a, b) => +a.price - +b.price),
+        [products]
+    );
+
+    const [sortedProducts, setSortedProducts] = useState(sortedProductsPrice);
+    const [currentMin, setCurrentMin] = useState("");
+    const [currentMax, setcurrentMax] = useState("");
+    const [activeButton, setActiveButton] = useState("alle");
 
     const minPrice = useMemo(() => {
         return Math.min(...products.map((product) => product.price));
@@ -29,20 +38,29 @@ const Products = () => {
 
     const sortingButtonCLick = (e) => {
         const category = e.target.textContent;
-        if (category === "alle") {
-            setSortedProducts(products);
-        } else {
-            setSortedProducts(
-                products.filter((product) => product.category === category)
-            );
-        }
+        setActiveButton(category);
+
+        setSortedProducts(
+            products.filter(
+                (product) =>
+                    product.price >= currentMin &&
+                    product.price <= currentMax &&
+                    (category === "alle" || product.category === category)
+            )
+        );
     };
 
-    useEffect(() => {
-        if (products) {
-            setSortedProducts(products);
-        }
-    }, [products]);
+    const onMultiRangeSliderChange = ({ min, max }) => {
+        setCurrentMin(min);
+        setcurrentMax(max);
+
+        const filterProducts = (product) =>
+            product.price >= min &&
+            product.price <= max &&
+            (activeButton === "alle" || product.category === activeButton);
+
+        setSortedProducts(products.filter(filterProducts));
+    };
 
     return (
         <SectionLayout>
@@ -58,7 +76,11 @@ const Products = () => {
                     {categories.map((category, index) => (
                         <Button
                             onClick={sortingButtonCLick}
-                            className={styles.button}
+                            className={`${styles.button} ${
+                                activeButton == category
+                                    ? styles.activeButton
+                                    : ""
+                            }`}
                             key={index}
                         >
                             {category}
@@ -70,9 +92,7 @@ const Products = () => {
                 <MultiRangeSlider
                     min={minPrice}
                     max={maxPrice}
-                    onChange={({ min, max }) =>
-                        console.log(`min = ${min}, max = ${max}`)
-                    }
+                    onChange={onMultiRangeSliderChange}
                 />
             )}
             <FetchDataHandler
