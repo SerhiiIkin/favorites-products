@@ -51,6 +51,7 @@ const Products = () => {
     };
 
     const onMultiRangeSliderChange = ({ min, max }) => {
+       
         setCurrentMin(min);
         setcurrentMax(max);
 

@@ -5,10 +5,13 @@
     border-radius: 10px;
     align-items: center;
     gap: 10px;
-    transition: background-color 1.5s ease 0s;
+    transition: all 1.5s ease 0s;
+    grid-template-rows: subgrid;
+    grid-row: span 8;
     @media (min-width: 1281px) {
         &:hover {
             background-color: #16825c;
+            color: white;
         }
     }
 }
@@ -37,7 +40,7 @@
     display: flex;
     overflow: hidden;
     position: relative;
-    height: 400px;
+    max-height: 300px;
     & img {
         object-fit: contain;
     }
@@ -120,7 +123,7 @@
     translate: 0 -50%;
     @media (min-width: 1281px) {
         &:hover {
-            color: lightcyan;
+            color: darkorchid;
         }
     }
 }
@@ -133,7 +136,7 @@
     rotate: 180deg;
     @media (min-width: 1281px) {
         &:hover {
-            color: lightcyan;
+            color: darkorchid;
         }
     }
 }

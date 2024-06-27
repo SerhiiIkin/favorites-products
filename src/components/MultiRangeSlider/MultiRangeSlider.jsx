@@ -11,6 +11,12 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
     const onMinValueChange = (event) => {
         setMinVal(event.target.value);
+
+        if (event.target.value < 0) {
+            setMinVal(0);
+            return;
+        }
+
         minValRef.current = event.target.value;
         setTimeout(() => {
             if (event.target.value >= maxVal) {
@@ -22,7 +28,14 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
     };
 
     const onMaxValueChange = (event) => {
+
         setMaxVal(event.target.value);
+
+        if (event.target.value > max) {
+            setMaxVal(max);
+            return;
+        }
+
         maxValRef.current = event.target.value;
         setTimeout(() => {
             if (event.target.value <= minVal) {
