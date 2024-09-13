@@ -14,19 +14,19 @@ const Header = () => {
         () => [
             {
                 name: "Home",
-                path: "/",
+                path: "/favorites-products/",
             },
             {
                 name: "About",
-                path: "/about",
+                path: "/favorites-products/about",
             },
             {
                 name: "Contact",
-                path: "/contact",
+                path: "/favorites-products/contact",
             },
             {
                 name: "Products",
-                path: "/products",
+                path: "/favorites-products/products",
             },
         ],
         []
@@ -71,7 +71,7 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <nav className={`container ${styles.container}`}>
-                <Link to="/">
+                <Link to="/favorites-products/">
                     <img className={styles.logo} src={Logo} alt="logo" />
                 </Link>
                 <ul className={styles.menu}>

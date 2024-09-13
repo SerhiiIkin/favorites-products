@@ -55,7 +55,7 @@ const ProductCard = ({ product }) => {
     };
 
     return (
-        <Link to={`/products/${product.id}`} className={styles.card}>
+        <Link to={`/favorites-products/products/${product.id}`} className={styles.card}>
             <Title
                 typeTitle="h3"
                 titleText={product.title}

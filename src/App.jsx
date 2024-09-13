@@ -8,7 +8,7 @@ import MainLayout from "./components/Layouts/MainLayout/MainLayout";
 function App() {
     const router = createBrowserRouter([
         {
-            path: "/",
+            path: "/favorites-products",
             element: (
                 <MainLayout>
                     <Home />
@@ -16,7 +16,7 @@ function App() {
             ),
         },
         {
-            path: "about",
+            path: "/favorites-products/about",
             element: (
                 <MainLayout>
                     <About />
@@ -24,7 +24,7 @@ function App() {
             ),
         },
         {
-            path: "contact",
+            path: "/favorites-products/contact",
             element: (
                 <MainLayout>
                     <Contact />
@@ -32,7 +32,7 @@ function App() {
             ),
         },
         {
-            path: "products",
+            path: "/favorites-products/products",
             element: (
                 <MainLayout>
                     <Products />
@@ -40,7 +40,7 @@ function App() {
             ),
         },
         {
-            path: "products/:id",
+            path: "/favorites-products/products/:id",
             element: (
                 <MainLayout>
                     <SingleProduct />
