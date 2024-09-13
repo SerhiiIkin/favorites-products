@@ -5,24 +5,32 @@ const useFetch = () => {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true);
-    
-    const [favoritesLocalStorage, setFavoritesLocalStorage] = useLocalStorage("myFavorites", []);
-    const [basketLocalStorage, setBasketLocalStorage] = useLocalStorage("basket", []);
-    
-    
+
+    const [favoritesLocalStorage, setFavoritesLocalStorage] = useLocalStorage(
+        "myFavorites",
+        []
+    );
+    const [basketLocalStorage, setBasketLocalStorage] = useLocalStorage(
+        "basket",
+        []
+    );
+
     const myFavorites = useMemo(() => {
-        return products.filter((product) => favoritesLocalStorage.includes(product.id));
+        return products.filter((product) =>
+            favoritesLocalStorage.includes(product.id)
+        );
     }, [products, favoritesLocalStorage]);
-    
-   
+
     const myBasket = useMemo(() => {
-        return products.filter((product) => basketLocalStorage.includes(product.id)).map((product) => ({
-            title: product.title,
-            count: 1,
-            id: product.id,
-            price: product.price,
-            fullPrice: product.price,
-        }));
+        return products
+            .filter((product) => basketLocalStorage.includes(product.id))
+            .map((product) => ({
+                title: product.title,
+                count: 1,
+                id: product.id,
+                price: product.price,
+                fullPrice: product.price,
+            }));
     }, [basketLocalStorage, products]);
 
     const [basketProducts, setBasketProducts] = useState(myBasket);
@@ -57,10 +65,22 @@ const useFetch = () => {
     }, []);
     useEffect(() => {
         setBasketProducts(myBasket);
-    }, [products,setBasketLocalStorage]);
+    }, [products, setBasketLocalStorage]);
 
-
-    return { products, error, isLoading, favorites, myFavorites, setFavoritesLocalStorage, favoritesLocalStorage, setBasketLocalStorage, myBasket, basketLocalStorage, basketProducts, setBasketProducts };
+    return {
+        products,
+        error,
+        isLoading,
+        favorites,
+        myFavorites,
+        setFavoritesLocalStorage,
+        favoritesLocalStorage,
+        setBasketLocalStorage,
+        myBasket,
+        basketLocalStorage,
+        basketProducts,
+        setBasketProducts,
+    };
 };
 
 export default useFetch;

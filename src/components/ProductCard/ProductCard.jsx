@@ -4,7 +4,7 @@ import styles from "./productCard.module.css";
 import Button from "../Button/Button";
 import { FaArrowLeft } from "react-icons/fa6";
 import { MdOutlineAddShoppingCart, MdFileDownloadDone } from "react-icons/md";
-import {  useState } from "react";
+import { useState } from "react";
 import { FcLike } from "react-icons/fc";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
@@ -14,10 +14,8 @@ const ProductCard = ({ product }) => {
         favoritesLocalStorage,
         setBasketLocalStorage,
         basketLocalStorage,
-        
     } = useFetch();
     const [imagesFiltered, setImagesFiltered] = useState(product.images);
-   
 
     const onClickBtn = (event) => {
         event.preventDefault();
